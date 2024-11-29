@@ -12,7 +12,7 @@ interface props {
     productId:string
 }
 function Modal({productId}:props) {
-  let [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting , setIsSubmitting] = useState(false);
   const [email,setEmail] = useState('')
 

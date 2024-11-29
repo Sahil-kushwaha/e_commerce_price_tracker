@@ -17,7 +17,7 @@ function HeroCarousel() {
 <div className='hero-carousel  dark:bg-darkTheme'>
     <Carousel
       showThumbs={false}
-      // autoPlay
+      autoPlay
       infiniteLoop
       interval={2000}
       showArrows={false}
