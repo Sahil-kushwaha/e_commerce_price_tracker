@@ -5,6 +5,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import PriceInfoCard from "@/components/PriceInfoCard";
 import ProductCard from "@/components/ProductCard";
+import Modal from "@/components/Modal";
 
 interface Props{
     params : {id:string}
@@ -139,7 +140,7 @@ async function ProductDetails({params}:Props){
                              />
                          </div>
                       </div>
-                      Modal
+                  <Modal productId={params.id}/>
                 </div>
              </div>
              <div className="flex flex-col gap-16  ">
@@ -147,7 +148,7 @@ async function ProductDetails({params}:Props){
                     <h3 className="text-2xl dark:text-slate-200 text-secondary  font-semibold">
                          Product Description
                     </h3>
-                    <div>
+                    <div className=" max-md:product-short-description">
                          {product?.description?.split('\n')}
                     </div>
                  </div>

@@ -103,6 +103,10 @@ body {
   }
 
     /* PRODUCT DETAILS PAGE STYLES */
+   
+  .product-short-description{
+     @apply w-96  whitespace-nowrap overflow-hidden text-ellipsis
+  }  
   .product-container {
     @apply flex flex-col gap-16 flex-wrap px-6 md:px-20 py-24;
   }
@@ -131,5 +135,30 @@ body {
   .price-info_card {
     @apply flex-1 min-w-[200px] flex flex-col gap-2  rounded-10 dark:bg-slate-600 bg-white-100 px-5 py-4;
   }
-
+  
 }
+ 
+/* MODAL */
+  .dialog-container {
+    @apply fixed inset-0 z-10 overflow-y-auto bg-black bg-opacity-60;
+  }
+
+  .dialog-content {
+    @apply p-6 bg-white inline-block w-full max-w-md my-8 overflow-hidden text-left align-middle transition-all transform  shadow-xl rounded-2xl;
+  }
+
+  .dialog-head_text {
+    @apply text-secondary text-lg leading-[24px] font-semibold mt-4;
+  }
+
+  .dialog-input_container {
+    @apply px-5 py-3 mt-3 flex items-center gap-2 border border-gray-300 rounded-[27px];
+  }
+
+  .dialog-input {
+    @apply flex-1 pl-1 border-none text-gray-500 text-base focus:outline-none border border-gray-300 rounded-[27px] shadow-xs;
+  }
+
+  .dialog-btn {
+    @apply px-5 py-3  text-base font-semibold border border-secondary bg-secondary rounded-lg mt-8;
+  }

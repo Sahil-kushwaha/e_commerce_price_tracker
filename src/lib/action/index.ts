@@ -5,6 +5,8 @@ import { connectDB } from "../db/config.db";
 import { amazonProductScrapper } from "../scrapper";
 import { getAveragePrice, getHighestPrice, getLowestPrice } from "../utils";
 import { revalidatePath } from "next/cache";
+import { User } from "@/types/type";
+import { generateEmailBody, sendEmail } from "../nodemailer";
 
 export async function scrapeAndStoreProduct(producturl:string){
       
@@ -51,7 +53,7 @@ export async function getProductById(productId:string) {
       try{
            connectDB();
            
-           const product = await Product.findById(productId)
+           const product= await Product.findById(productId)
            if(!product) return null;
            
            return product;
@@ -87,4 +89,27 @@ export async function getSimilarProducts(productId:string) {
           } catch (error:any) {
             console.log(error.message)
        }
+}
+
+export async function addUserEmailToProduct(productId: string,userEmail:string){
+      try {
+            const product = await Product.findById(productId)
+         
+            if(!product) return;
+
+            const userExists = product.users.some((user:User)=>user.email === userEmail)
+
+            if(!userExists) {
+                product.users.push({email:userEmail});
+            }
+
+            await product.save();
+
+            const emailContent = generateEmailBody(product,"WELCOME")
+
+            await sendEmail(emailContent, [userEmail])
+
+      } catch (error:any) {
+           console.log(error.message)
+      }
 }
