@@ -4,7 +4,7 @@ import {
   Dialog,
 } from "@headlessui/react";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import Image from "next/image";
 import { addUserEmailToProduct } from "@/lib/action";
 

@@ -5,12 +5,14 @@ import { getAveragePrice, getEmailNotifType, getHighestPrice, getLowestPrice } f
 import Product from "@/models/product.model";
 import {  NextResponse } from "next/server";
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0;
 export async function GET() {
      try {
           connectDB()  
           
           const product = await Product.find()
-          if(!product) throw new Error("No Products found")
+          if(!product || product.length === 0) throw new Error("No Products found")
          
          // 1. scrape latest product details and update DB
          const updateProducts = await Promise.all(
@@ -65,6 +67,7 @@ export async function GET() {
         })
 
      } catch (error:any) {
-         console.error(error.message)
+        console.error(error.message); 
+        return NextResponse.json({ message: "error", error: error.message }, { status: 500 });
      }
 }

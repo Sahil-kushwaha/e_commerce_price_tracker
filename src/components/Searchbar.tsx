@@ -43,6 +43,7 @@ function Searchbar() {
         }
         finally{
           setIsLoading(false)
+          setsearchPrompt("")
         }
     }
 
