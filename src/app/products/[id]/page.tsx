@@ -161,7 +161,7 @@ async function ProductDetails({params}:Props){
                        height={22}
                      />
 
-                     <Link href='/' className="text-base" >
+                     <Link href={product.url} target="_blank" className="text-base" >
                         Buy Now
                      </Link>
                  </button>

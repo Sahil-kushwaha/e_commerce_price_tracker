@@ -1,3 +1,4 @@
+'use sever'
 import { EmailContent, EmailProductInfo, NotificationType } from '@/types/type'
 import  nodemailer from 'nodemailer'
 

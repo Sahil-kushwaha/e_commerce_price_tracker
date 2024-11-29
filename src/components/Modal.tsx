@@ -59,7 +59,7 @@ function Modal({productId}:props) {
                   />
                 </div>
                 <Image
-                  src="/assets/icons/x-closeModal.svg"
+                  src="/assets/icons/x-close.svg"
                   alt="closeModal"
                   width={24}
                   height={24}
